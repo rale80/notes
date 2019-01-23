@@ -1,0 +1,110 @@
+html { box-sizing: border-box; }
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+* { margin: 0; padding: 0; }
+#notesApp {
+  margin: 20px auto;
+  width: 80%;
+  min-width: 640px;
+  max-width: 900px;
+  height: 90vh;
+  display: flex;
+  border: 1px solid #bbb;
+  box-shadow: 0 0 3px rgba(0,0,0,0.4);
+}
+#noteList {
+  width: 33%;
+  background: lightgrey;
+  overflow: auto;
+}
+#noteList li {
+  border-bottom: 1px dotted #888;
+  padding: 5px 0 5px 5px;
+  list-style: none;
+  cursor: pointer;
+}
+#noteList li h4 {
+  
+}
+#noteList li small {
+  
+}
+#note {
+  width: 67%;
+  background: #e3e3e3;
+}
+#noteControlls {
+  display: flex;
+  height: 10%;
+  padding: 0 10px;
+}
+#noteControlls .left, #noteControlls .center, #noteControlls .right {
+  height: 100%;
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+}
+#noteControlls .right {
+  justify-content: flex-end;
+}
+#title {
+  height: 60%;
+  padding: 0 5px;
+  border-radius: 5px;
+  border: none;
+  outline: 0;
+}
+#title:hover {
+  box-shadow: 0 0 2px rgba(0,0,0,0.3);
+}
+.btn {
+  display: block;
+  height: 55%;
+  width: 25px;
+  cursor: pointer;
+  font-size: 1.6em;
+  color: #ccc;
+  border: none;
+  background: transparent;
+  outline: none;
+}
+.btn-edt {
+  font-size: 0.8em;
+  color: #aaa;
+}
+#btnAdd, #btnRemove {
+  margin-right: 10px;
+}
+.btn:hover {
+  text-shadow: 0 0 0 rgba(0,0,0,0.6);
+}
+#noteContent {
+  background: #fff;
+  width: 100%;
+  height: 90%;
+  padding: 10px;
+  outline: 0;
+  overflow: auto;
+}
+.selected {
+  background: #eee;
+}
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+input.invalid::placeholder {
+  color: #e86d9c;
+}
+input.invalid::-webkit-input-placeholder { 
+  color: #e86d9c;
+}
+input.invali::-moz-placeholder { 
+  color: #e86d9c;
+}

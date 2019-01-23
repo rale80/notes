@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Notes App</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div id="notesApp">
+    <ul id="noteList"></ul>
+
+    <div id="note">
+      <div id="noteControlls">
+        <div class="left">
+          <button id="btnAdd" class="btn">
+            <i class="fas fa-plus"></i>
+          </button>
+          <input id="title" type="text" placeholder="Note Title">
+        </div>
+        <div class="center">
+        	<button class="btn btn-edt" onclick="format('bold')">
+        		<i class="fas fa-bold"></i>
+        	</button>
+        	<button class="btn btn-edt" onclick="format('italic')">
+        		<i class="fas fa-italic"></i>
+        	</button>
+        	<button class="btn btn-edt" onclick="format('underline')">
+        		<i class="fas fa-underline"></i>
+        	</button>
+        	<button class="btn btn-edt" onclick="format('hilitecolor', 'Select color')">
+        		<i class="fas fa-highlighter"></i>
+        	</button>
+        </div>
+        <div class="right">
+          <button id="btnRemove" class="btn">
+            <i class="fas fa-trash"></i>
+          </button>
+          <button id="btnSettings" class="btn">
+            <i class="fas fa-ellipsis-h"></i>
+          </button>
+        </div>
+      </div><!-- noteControlls -->
+
+      <div id="noteContent" contenteditable="true" spellcheck="false"></div>
+    </div><!-- note -->
+    </div><!-- notesApp -->
+  
+  <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script src="script.js"></script>
+  <script>
+    function format(cmd, promptString) {
+      let value = null;
+      if(promptString) value = prompt(promptString);
+      document.execCommand(cmd, false, value);
+    }
+  </script>
+</body>
+</html>
