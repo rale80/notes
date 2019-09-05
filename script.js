@@ -77,22 +77,27 @@
 		init() {
             this.noteList = $('#noteList');
             this.noteContent = $('#noteContent');
-            const id = this.noteList.find('li.selected').val();
-            this.currentNote = controller.getNoteById(id);
-                        
+            this.currentNote = null;
 
-        	// add button click handler
+        	// add input click handler
+            $('input#title').on('click', function(e) {
+            	view.currentNote = null;
+                view.noteContent.html('');
+                view.noteList.find('li').each(function() { 
+                    $(this).removeClass('selected');
+                });
+            });
+
+            // add button click handler
             $('#btnAdd').on('click', function(e) {
-            	const title = $('#title');
-            	if(title.val().trim() !== '') {
-            		view.noteContent.html('');
-            		controller.addNewNote(title.val(), '');
-            		view.noteList.find('li.selected').trigger('click');
-            		title.val('');	
-            		title.attr('placeholder', 'Note Title').removeClass('invalid');
-            	} else {
-            		title.attr('placeholder', 'You must enter title').addClass('invalid');
-        		}
+                const title = $('#title');
+                if(title.val().trim() !== '') {
+                    controller.addNewNote(title.val(), view.noteContent.html());
+                    title.val('');  
+                    title.attr('placeholder', 'Note Title').removeClass('invalid');
+                } else {
+                    title.attr('placeholder', 'You must enter title').addClass('invalid');
+                }
             });
 
             // remove button click handler
@@ -115,14 +120,15 @@
 
             // add content change on blur
             this.noteContent.on('blur', function() {
-            	if(view.currentNote === undefined) {
+                console.log(view.currentNote);
+            	if(view.currentNote === null) {
             		return false;
             	}
         		let content = view.noteContent.html();
         		if(view.currentNote.content !== content) {
         			view.currentNote.content = content;
-        			controller.updateNote(view.currentNote);
-    			}        
+        			controller.updateNote(view.currentNote);  
+    			}    
         	});
 
             view.render();
@@ -139,7 +145,7 @@
             });
             this.noteList.html(noteListHtmlStr);
             this.noteContent.html('');
-            this.noteList.find('li:first').addClass('selected').trigger('click');
+            this.noteList.find('li:first').trigger('click');
         }
 	};
 
