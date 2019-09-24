@@ -120,7 +120,7 @@
 
             // add content change on blur
             this.noteContent.on('blur', function() {
-                console.log(view.currentNote);
+                
             	if(view.currentNote === null) {
             		return false;
             	}
